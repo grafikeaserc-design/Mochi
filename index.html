@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mochi - Personal AI Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- SPLASHSCREEN -->
+    <div id="splashscreen" class="splashscreen">
+        <div class="splash-content">
+            <img src="/images/Mochilogo.png" style="width: 80dvw; height: auto; max-width: 500px;">            <h1>Mochi</h1>
+            <p>Your Personal AI Assistant</p>
+        </div>
+    </div>
+
+    <div class="app-container">
+        
+        <!-- 1. CHAT SCREEN VIEW -->
+        <div id="view-chat" class="screen-view active-view">
+            
+            <!-- Top Header -->
+            <header class="app-header">
+                <button class="icon-btn" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+                <div class="header-status" id="status" style="font-size: 0.8rem; color: var(--text-muted);">Mochi Ready</div>
+                <button class="icon-btn" aria-label="Settings"><i class="fa-solid fa-gear"></i></button>
+            </header>
+
+            <!-- Greeting Section -->
+            <section class="greeting-section">
+                <h1>Hello, Friend!</h1>
+                <p>How can I help you today?</p>
+            </section>
+
+            <!-- Persistent Central Floating Orb / Assistant Face -->
+            <div class="assistant-hero">
+                <div class="orb-container">
+                    <div class="glowing-orb">
+                        <div class="orb-eyes">
+                            <span class="eye"></span>
+                            <span class="eye"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Messages Container -->
+            <div id="chat-messages" class="chat-messages"></div>
+
+            <!-- Quick Action Chips Grid -->
+            <div class="action-chips-grid" id="action-chips">
+                <button class="chip-btn" data-prompt="Create an image">
+                    <i class="fa-regular fa-image"></i> Create an image
+                </button>
+                <button class="chip-btn" data-prompt="Give me ideas">
+                    <i class="fa-solid fa-lightbulb"></i> Give me ideas
+                </button>
+                <button class="chip-btn" data-prompt="Schedule team meeting tomorrow at 10 AM">
+                    <i class="fa-regular fa-calendar-days"></i> Schedule meeting
+                </button>
+                <button class="chip-btn" data-prompt="Set alarm at 7:30 AM">
+                    <i class="fa-solid fa-bell"></i> Set alarm
+                </button>
+            </div>
+
+            <!-- Bottom Floating Input Bar -->
+            <form id="chat-form" class="chat-input-bar">
+                <button type="button" class="input-action-btn" aria-label="Add attachment"><i class="fa-solid fa-plus"></i></button>
+                <input type="text" id="chat-input" placeholder="Ask me anything..." autocomplete="off" />
+                <button type="submit" class="mic-btn" id="send-btn" aria-label="Send message"><i class="fa-solid fa-arrow-up"></i></button>
+            </form>
+
+        </div>
+
+        <!-- 2. CALENDAR & TASKS SCREEN VIEW -->
+        <div id="view-calendar" class="screen-view">
+            <div class="calendar-container" style="display:flex; flex-direction:column; gap:15px; width:100%;">
+                <div class="calendar-card" style="background:#fff; padding:15px; border-radius:20px; border:1px solid rgba(0,0,0,0.08);">
+                    <div class="calendar-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+                        <h2>October 2026</h2>
+                    </div>
+                    <div class="calendar-weekdays" style="display:grid; grid-template-columns:repeat(7,1fr); text-align:center; font-size:0.8rem; font-weight:bold; color:#718096;">
+                        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                    </div>
+                    <div id="calendar-days" class="calendar-days-grid" style="display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin-top:8px;"></div>
+                </div>
+
+                <div class="side-panel" style="display:flex; flex-direction:column; gap:10px;">
+                    <div class="panel-section" style="background:#fff; padding:15px; border-radius:20px; border:1px solid rgba(0,0,0,0.08);">
+                        <h3 style="font-size:1rem; margin-bottom:8px;"><i class="fa-regular fa-calendar-check"></i> Scheduled Tasks</h3>
+                        <ul id="event-list" class="item-list" style="list-style:none; display:flex; flex-direction:column; gap:6px;">
+                            <li class="empty-state">No scheduled tasks yet.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. DESK MODE SCREEN VIEW (Landscape Rotation & Voice Orb) -->
+        <!-- 3. DESK MODE SCREEN VIEW -->
+        <div id="view-desk" class="screen-view desk-mode-view">
+            <div class="desk-decor-content">
+                <!-- Back Button to return to normal -->
+                <button id="exit-desk-btn" class="exit-desk-btn" title="Back to Normal Mode">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                
+                <!-- Rotating Landscape Container -->
+                <div class="desk-landscape-frame">
+                    <div class="desk-avatar-container">
+                        <!-- Avatar -->
+                        <div class="glowing-orb desk-orb">
+                            <div class="orb-eyes">
+                                <span class="eye"></span>
+                                <span class="eye"></span>
+                            </div>
+                        </div>
+
+                        <div id="desk-status-text">Tap mic to speak with Mochi</div>
+
+                        <!-- Microphone Button -->
+                        <div class="desk-mic-wrapper">
+                            <button id="desk-mic-btn" class="desk-mic-btn" title="Talk with Mochi">
+                                <i class="fa-solid fa-microphone"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NAVBAR -->
+        <nav id="navbar">
+            <button class="nav-item active" data-target="view-chat">
+                <i class="fa-solid fa-comments"></i>
+                <span>Chat</span>
+            </button>
+            <button class="nav-item" data-target="view-calendar">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span>Calendar</span>
+            </button>
+            <button class="nav-item" data-target="view-desk">
+                <i class="fa-solid fa-desktop"></i>
+                <span>Desk Mode</span>
+            </button>
+        </nav>
+
+    </div>
+
+    <script src="tools/tools.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
