@@ -143,7 +143,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         extractSlots(text, intent) {
-            // Use actual current date (or set to new Date(2026, 9, 25) if testing with a mock date)
             const today = new Date(); 
             let targetDate = new Date(today);
             const lowerText = text.toLowerCase();
@@ -168,8 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
             } else if (matchedDay !== null) {
                 const currentDay = today.getDay();
                 let diff = matchedDay - currentDay;
-                
-                // If the day has already passed this week (or is today and you want the upcoming one), push to next week
                 if (diff <= 0) {
                     diff += 7;
                 }
@@ -242,16 +239,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         handleMessage(userInput) {
-            let intent = "Fallback";
+            let intent = "General_Chat";
             let confidence = 1.0;
             const lower = userInput.toLowerCase();
 
-            if (lower.includes("alarm")) {
+            // 1. Check explicit keyword overrides in correct priority order (Cancellations FIRST)
+            if (lower.includes("cancel") || lower.includes("delete") || lower.includes("remove")) {
+                intent = lower.includes("alarm") ? "Cancel_Alarm" : "Cancel_Event";
+            } else if (lower.includes("alarm")) {
                 intent = "Set_Alarm";
             } else if (lower.includes("reminder") || lower.includes("remind")) {
                 intent = "Set_Reminder";
-            } else if (lower.includes("cancel") || lower.includes("delete") || lower.includes("remove")) {
-                intent = lower.includes("alarm") ? "Cancel_Alarm" : "Cancel_Event";
             } else if (lower.includes("schedule") || lower.includes("meeting") || lower.includes("book")) {
                 intent = "Schedule_Event";
             } else if (lower.includes("task") || lower.includes("todo")) {
@@ -261,24 +259,18 @@ document.addEventListener("DOMContentLoaded", () => {
             } else if (lower.includes("open") || lower.includes("launch")) {
                 intent = "Open_App";
             } else if (this.classifier) {
+                // 2. Fall back to ML classifier for other intents (Quick_Calculate, Timer_Set, General_Chat, etc.)
                 const prediction = this.classifier.predict(userInput);
                 intent = prediction.predicted;
                 confidence = prediction.confidence;
-                if (confidence < 0.5) {
-                    intent = "Fallback";
-                }
-            } else {
-                intent = "Fallback";
             }
 
             const slots = this.extractSlots(userInput, intent);
             
             let toolResult = { success: true };
-            if (tools && intent !== "Fallback") {
+            if (tools && intent !== "General_Chat") {
                 toolResult = tools.execute(intent, slots, userInput);
                 if (toolResult && toolResult.result !== undefined) slots.result = toolResult.result;
-            } else {
-                toolResult = { success: false, error: "Fallback intent triggered" };
             }
 
             if (toolResult && toolResult.success && ["Create_Task", "Schedule_Event", "Set_Reminder", "Cancel_Event", "Delete_Task"].includes(intent)) {
@@ -287,7 +279,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 renderLists();
             }
 
-            const defaultTemplates = [`I'm not quite sure how to help with that. Could you please clarify?`];
+            const defaultTemplates = [`I'm on it! Processed request for ${intent.replace(/_/g, ' ').toLowerCase()}.`];
             const templates = this.responses[intent] || defaultTemplates;
             let template = templates[Math.floor(Math.random() * templates.length)];
 
