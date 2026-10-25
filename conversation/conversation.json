@@ -13,7 +13,7 @@
     "Bye! Have a great time.",
     "Catch you later!"
   ],
-  "Bot_Identity": [
+  "identity": [
     "I am your personal productivity assistant. I can schedule events, set timers, track habits, log expenses, and more!",
     "I'm an intent-classification assistant designed to manage your schedule, tasks, notes, and productivity tools.",
     "I'm your task and productivity model! Tell me what you need, and I'll handle the rest."
@@ -59,27 +59,7 @@
     "New task added successfully: '{task_name}'.",
     "Saved '{task_name}' to your todos."
   ],
-  "Log_Expense": [
-    "Logged ₹{amount} for {category}.",
-    "Got it! Added an expense of ₹{amount} towards {category}.",
-    "Expense recorded: ₹{amount} for {category}.",
-    "Done. ₹{amount} has been logged under {category}.",
-    "Recorded successfully! ₹{amount} spent on {category}."
-  ],
-  "Quick_Note": [
-    "Note saved: '{content}'.",
-    "Got it, I've jotted down that note for you.",
-    "Saved your quick note securely.",
-    "Note captured successfully: '{content}'.",
-    "Added to your notes!"
-  ],
-  "Launch_Workspace": [
-    "Launching your {mode} workspace now.",
-    "Setting up the {mode} environment for you.",
-    "Workspace initialized: {mode}.",
-    "Opening all productivity tabs and tools for {mode}.",
-    "Your {mode} setup is ready to go!"
-  ],
+
   "Web_Search": [
     "Here are the search results for '{query}':",
     "I found this online regarding '{query}':",
@@ -87,20 +67,7 @@
     "Here is what I pulled up for '{query}':",
     "Top results for '{query}':"
   ],
-  "Bookmark_Save": [
-    "Page bookmarked successfully under '{folder}'.",
-    "Saved current tab to your bookmarks.",
-    "Added this page to your reading list/favorites.",
-    "Bookmark stored!",
-    "Done! This page is now saved."
-  ],
-  "Media_Control": [
-    "Media player: {action}.",
-    "Done, audio has been {action}.",
-    "Executing media command: {action}.",
-    "Audio adjusted successfully.",
-    "Got it, {action}."
-  ],
+ 
   "Timer_Set": [
     "Timer set for {duration}.",
     "Countdown started for {duration}.",
@@ -108,41 +75,7 @@
     "Timer is ticking: {duration} remaining starting now.",
     "Alarm/Timer set for {duration}."
   ],
-  "Focus_Mode": [
-    "Focus mode enabled. Distractions are blocked.",
-    "Deep work mode is now active. Enjoy your focus time!",
-    "Notifications muted. You're locked in.",
-    "Focus profile activated successfully.",
-    "Quiet mode is on."
-  ],
-  "Log_Habit": [
-    "Great job! Marked '{habit_name}' as completed for today.",
-    "Habit logged: '{habit_name}' streak updated!",
-    "Awesome! Recorded your progress on '{habit_name}'.",
-    "Checked off '{habit_name}' on your daily routine.",
-    "Habit saved successfully."
-  ],
-  "Check_Habits": [
-    "Here is your habit completion status for today: {details}",
-    "You have these habits left to finish: {details}",
-    "Checking your streaks and routines... {details}",
-    "Here is your daily checklist overview: {details}",
-    "Habit status loaded: {details}"
-  ],
-  "Save_Snippet": [
-    "Snippet saved to your vault/notes.",
-    "Captured clipboard content successfully.",
-    "Stored code snippet for later reference.",
-    "Saved selected text to your storage.",
-    "Snippet captured!"
-  ],
-  "Clear_Clipboard": [
-    "Clipboard memory cleared.",
-    "Wiped clipboard history successfully.",
-    "Clipboard is now clean and empty.",
-    "Reset clipboard data.",
-    "All copied items cleared."
-  ],
+
   "Quick_Calculate": [
     "The result is {result}.",
     "Calculated: {expression} = {result}.",
@@ -156,13 +89,7 @@
     "That gives {result} {to_unit}.",
     "Calculation: {result} {to_unit}."
   ],
-  "Toggle_Theme": [
-    "Switched UI theme to {theme} mode.",
-    "Theme updated to {theme}.",
-    "Enjoy the new look! {theme} mode activated.",
-    "Interface set to {theme}.",
-    "Theme toggled."
-  ],
+
   "Alarm_Set": [
     "Alarm set for {time}.",
     "Got it! I'll wake you up at {time}.",
@@ -182,11 +109,5 @@
     "Redirecting to {app_name}...",
     "Opened {app_name} successfully.",
     "Here is {app_name}."
-  ],
-  "Toggle_Audio": [
-    "Audio status updated: {state}.",
-    "Browser audio has been {state}.",
-    "Done, sound is now {state}.",
-    "Audio toggled successfully."
   ]
 }

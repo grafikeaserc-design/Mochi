@@ -24,9 +24,7 @@
             
             <!-- Top Header -->
             <header class="app-header">
-                <button class="icon-btn" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
                 <div class="header-status" id="status" style="font-size: 0.8rem; color: var(--text-muted);">Mochi Ready</div>
-                <button class="icon-btn" aria-label="Settings"><i class="fa-solid fa-gear"></i></button>
             </header>
 
             <!-- Greeting Section -->
@@ -52,11 +50,11 @@
 
             <!-- Quick Action Chips Grid -->
             <div class="action-chips-grid" id="action-chips">
-                <button class="chip-btn" data-prompt="Create an image">
-                    <i class="fa-regular fa-image"></i> Create an image
+                <button class="chip-btn" data-prompt="Search weather today">
+                    <i class="fa-regular fa-image"></i> Search weather today
                 </button>
-                <button class="chip-btn" data-prompt="Give me ideas">
-                    <i class="fa-solid fa-lightbulb"></i> Give me ideas
+                <button class="chip-btn" data-prompt="Open youtube">
+                    <i class="fa-solid fa-lightbulb"></i> Open youtube
                 </button>
                 <button class="chip-btn" data-prompt="Schedule team meeting tomorrow at 10 AM">
                     <i class="fa-regular fa-calendar-days"></i> Schedule meeting
@@ -99,38 +97,6 @@
             </div>
         </div>
 
-        <!-- 3. DESK MODE SCREEN VIEW (Landscape Rotation & Voice Orb) -->
-        <!-- 3. DESK MODE SCREEN VIEW -->
-        <div id="view-desk" class="screen-view desk-mode-view">
-            <div class="desk-decor-content">
-                <!-- Back Button to return to normal -->
-                <button id="exit-desk-btn" class="exit-desk-btn" title="Back to Normal Mode">
-                    <i class="fa-solid fa-arrow-left"></i>
-                </button>
-                
-                <!-- Rotating Landscape Container -->
-                <div class="desk-landscape-frame">
-                    <div class="desk-avatar-container">
-                        <!-- Avatar -->
-                        <div class="glowing-orb desk-orb">
-                            <div class="orb-eyes">
-                                <span class="eye"></span>
-                                <span class="eye"></span>
-                            </div>
-                        </div>
-
-                        <div id="desk-status-text">Tap mic to speak with Mochi</div>
-
-                        <!-- Microphone Button -->
-                        <div class="desk-mic-wrapper">
-                            <button id="desk-mic-btn" class="desk-mic-btn" title="Talk with Mochi">
-                                <i class="fa-solid fa-microphone"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- NAVBAR -->
         <nav id="navbar">
@@ -142,14 +108,11 @@
                 <i class="fa-solid fa-calendar-days"></i>
                 <span>Calendar</span>
             </button>
-            <button class="nav-item" data-target="view-desk">
-                <i class="fa-solid fa-desktop"></i>
-                <span>Desk Mode</span>
-            </button>
         </nav>
 
     </div>
-
+<!-- Toast Container -->
+<div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px;"></div>
     <script src="tools/tools.js"></script>
     <script src="script.js"></script>
 </body>
