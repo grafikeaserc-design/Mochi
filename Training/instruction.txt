@@ -1,0 +1,41 @@
+# Model Training Instructions
+
+# Prerequisites
+Make sure you have Python 3.x installed. Then, install the required Python libraries via your terminal:
+```bash
+pip install numpy scikit-learn
+
+Step 1: open the task.json(task/task.json) from the folder 'task'. 
+        this is the dataset i have created and trained the model on. 
+        use the same format {"input": "[Your prompt]", "intent": "[Your Intention for the prompt]"} ,for your new data.
+        intent in simple word is the idea behind your prompt example "Good morning ,Mochi" here the intent is greeting as in the prompt it shows greeting.
+
+        Rule for the new data:
+        - add 5-10 variation(example of your intent) : it will improve the accuracy of the classification model.
+
+Step 2: Run the python script (Training.py).
+Step 3: After the completion of the run ,a model_weights.json file should be ready .
+Step 4: Replace the model_weights.json file with your new model_weights.json file.
+
+# Great! your model can now do classification on the new intent.
+
+# About response (conversation/conversation.json):
+    the model responses are all in the conversation.json(conversation/conversation.json).
+    
+    Rule: the intent should match with the Key , you may write your response which are the values of the key or generate with the help of llms.
+
+# About Tools(tools/tools.json):
+    this files contains all the tools the model uses. You may add your own tools here , but donot follow to mention which tool call is associated with which intent in the switch case block.
+
+    there are few hardcoded keywords for the intention in the script.js ,so even if the model fails to classify they can help.
+
+
+# Few suggestion :
+    You can connect a llm to the app ,as classification is faster in tool calling , it can be very useful to pass a prompt to the llm via local model or cloud models.
+    You may use give it a speech-to-text feature so you can give commands through your voice ,and also adding a text-to-speech will give a voice to the model.
+    You can turn this into a native app to make it a voice agent .
+    Adding this to a microcontroller , as it is very lightweight it should run in a ease.
+
+Thank you.
+
+
