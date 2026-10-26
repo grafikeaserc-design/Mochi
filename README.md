@@ -24,7 +24,7 @@ the project is inspired by Google Assistant.
 ## Train Model On Your Own 
 - Training folder contains the instruction on how to train the model along with the Training.py script.
 
-##Landing Page
+## Landing Page
 - **https://grafikeaserc-design.github.io/Mochi/landing-page/index.html**
 ## App
 - **https://grafikeaserc-design.github.io/Mochi/**
