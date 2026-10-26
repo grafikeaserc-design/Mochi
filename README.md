@@ -21,6 +21,8 @@ the project is inspired by Google Assistant.
 - **JAVASCRIPT**
 - **PYTHON** - To make the model and extract the weights.
 ---
+## Train Model On Your Own 
+- Training folder contains the instruction on how to train the model along with the Training.py script.
 
 ##Landing Page
 - **https://grafikeaserc-design.github.io/Mochi/landing-page/index.html**
